@@ -113,8 +113,8 @@ namespace Play.Handlers
                 string PicName = string.Format("{0}/{1}.jpg", imgPath, Path.GetFileName(VideoName));//视频图片的名字，绝对路径
 
                 //ProcessStartInfo startInfo = new ProcessStartInfo(settingPath.FfmpegPath)
-                var path = _hostingEnvironment.WebRootPath + "/ffmpeg.exe";
-                ProcessStartInfo startInfo = new ProcessStartInfo(path)
+                //var path = _hostingEnvironment.WebRootPath + "/ffmpeg.exe";
+                ProcessStartInfo startInfo = new ProcessStartInfo(settingPath.FfmpegPath)
                 {
                     CreateNoWindow = true,
 
@@ -169,8 +169,8 @@ namespace Play.Handlers
 
                 //执行命令获取该文件的一些信息 
                 //string ffmpegPath = new FileInfo(Process.GetCurrentProcess().MainModule.FileName).DirectoryName + @"\ffmpeg.exe";
-                var path = _hostingEnvironment.WebRootPath + "/ffmpeg.exe";
-                ProcessStartInfo startInfo = new ProcessStartInfo(path)
+                //var path = _hostingEnvironment.WebRootPath + "/ffmpeg.exe";
+                ProcessStartInfo startInfo = new ProcessStartInfo(ffmpegPath)
                 {
                     CreateNoWindow = true,
                     Arguments = string.Format(" -i  \"{0}\" ", videoFilePath)
