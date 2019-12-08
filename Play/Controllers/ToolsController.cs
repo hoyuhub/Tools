@@ -42,24 +42,38 @@ namespace Play.Controllers
         //重命名所有视频文件
         public void RenameAllVideo()
         {
-            string path = _settingPath.VideoFilePath;
-            string[] files = Directory.GetFiles(path, "*.mp4");
-            foreach (var item in files)
+            try
             {
-                string directory = Path.GetDirectoryName(item);
-                //string extension = Path.GetExtension(item);
-                string fileName = Path.GetFileName(item);
-                fileName = fileName.Replace(" ", "-");
-                System.IO.File.Move(item, string.Format("{0}/{1}", directory, fileName));
+                string path = _settingPath.VideoFilePath;
+                string[] files = Directory.GetFiles(path, "*.mp4");
+                foreach (var item in files)
+                {
+                    string directory = Path.GetDirectoryName(item);
+                    //string extension = Path.GetExtension(item);
+                    string fileName = Path.GetFileName(item);
+                    fileName = fileName.Replace(" ", "-");
+                    System.IO.File.Move(item, string.Format("{0}/{1}", directory, fileName));
+                }
+            }
+            catch (Exception e ) {
+                _logger.LogError(e.Message);
+                throw e;
             }
         }
         [HttpGet(Name = "DelImg")]
         //删除所有视频缩略图
         public void DelImg()
         {
-            string imgPath = _settingPath.VideoFilePath;
-            if (Directory.Exists(string.Format("{0}/img", imgPath)))
-                Directory.Delete(string.Format("{0}/img", imgPath), true);
+            try
+            {
+                string imgPath = _settingPath.VideoFilePath;
+                if (Directory.Exists(string.Format("{0}/img", imgPath)))
+                    Directory.Delete(string.Format("{0}/img", imgPath), true);
+            }
+            catch (Exception e) {
+                _logger.LogError(e.Message);
+                throw e;
+            }
         }
 
         [HttpGet(Name = "VideoInit")]
@@ -72,6 +86,7 @@ namespace Play.Controllers
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
+                throw e;
             }
         }
 
