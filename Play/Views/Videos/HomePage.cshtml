@@ -1,0 +1,32 @@
+@model List<Play.Models.VideoInfoModel>;
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    int before = Convert.ToInt32(@ViewBag.pageIndex) - 1;
+    int next = Convert.ToInt32(@ViewBag.pageIndex) + 1;
+}
+<script src="~/videojs/video.min.js"></script>
+<script src="~/videojs/lang/zh-CN.js"></script>
+<link href="~/videojs/video-js.css" rel="stylesheet" />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="media container-md">
+            <a asp-action="Play" asp-route-imgPath="@item.ImgPath" asp-route-playPath="@item.VideoPath">
+                <img style="width:100px;" src="@item.ImgPath" class="mr-3">
+            </a>
+            <div class="media-body container-md">
+                <h5 class="mt-0">Media heading</h5>
+
+            </div>
+        </div>
+    }
+</div>
+<form asp-action="homepage" method="get">
+    <div class="btn-group" role="group">
+        <button type="submit" asp-route-pageIndex="@before" class="btn btn-secondary">上一页</button>
+        <button asp-route-pageIndex="@next" class="btn btn-secondary">下一页</button>
+    </div>
+</form>
+
