@@ -110,7 +110,9 @@ namespace Play.Handlers
                 {
                     Directory.CreateDirectory(imgPath);
                 }
-                string PicName = string.Format("{0}/{1}.jpg", imgPath, Path.GetFileName(VideoName));//视频图片的名字，绝对路径
+                string videoFileName = Path.GetFileName(VideoName);
+                // 删掉图片尾部.mp4
+                string PicName = string.Format("{0}/{1}.jpg", imgPath, videoFileName.Remove(videoFileName.Length - 4));//视频图片的名字，绝对路径
 
                 //ProcessStartInfo startInfo = new ProcessStartInfo(settingPath.FfmpegPath)
                 //var path = _hostingEnvironment.WebRootPath + "/ffmpeg.exe";
