@@ -13,7 +13,7 @@ namespace Play.Controllers
     public class VideosController : Controller
     {
         private readonly IDatabase _redis;
-        private readonly int _pageSize = 12;
+        private readonly int _pageSize = 14;
         private int _start = 1, _end = 0;
         public VideosController(RedisCommon client)
         {
@@ -22,24 +22,27 @@ namespace Play.Controllers
 
 
         //视频网站首页
-        [HttpGet]
-        public IActionResult HomePage(int pageIndex = 0)
+        //[HttpGet]
+        public IActionResult HomePage(int pageIndex)
         {
             try
             {
                 int videoInfoId = GetVideoInfoId();
+                int maxPageIndex = videoInfoId / _pageSize;
+                if (maxPageIndex - 1 == pageIndex)
+                    pageIndex--;
                 if (pageIndex < 0)
                     pageIndex = 0;
                 if (pageIndex != 0)
                 {
-                    _start = videoInfoId - ((pageIndex - 1) * _pageSize);
+                    _start = videoInfoId - (pageIndex * _pageSize);
                 }
                 _end = _start + _pageSize;
                 var model = GetVideoInfo(_start, _end);
                 ViewBag.pageIndex = pageIndex;
                 return View(model);
             }
-            catch (Exception e )
+            catch (Exception e)
             {
 
                 throw e;
@@ -48,7 +51,7 @@ namespace Play.Controllers
         }
 
         //播放页面
-        public IActionResult Play(string imgPath,string playPath)
+        public IActionResult Play(string imgPath, string playPath)
         {
             ViewData["imgPath"] = imgPath;
             ViewData["playPath"] = playPath;
@@ -117,7 +120,7 @@ namespace Play.Controllers
             try
             {
                 List<VideoInfoModel> listVideoInfo = new List<VideoInfoModel>();
-                for (int i = start; i <=end; i++)
+                for (int i = start; i <= end; i++)
                 {
                     string key = string.Format("VIDEOINFO:{0}", i);
                     if (_redis.KeyExists(key))
