@@ -17,15 +17,15 @@ namespace Play.Handlers
     {
         private SettingPath settingPath;
         private readonly RedisCommon _redis;
-        private readonly IWebHostEnvironment _hostingEnvironment;
+        //private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly ILogger<ToolsController> _logger = null;
 
 
-        public VideosInit(SettingPath settingPath, RedisCommon client, IWebHostEnvironment hostingEnvironment, ILogger<ToolsController> logger)
+        public VideosInit(SettingPath settingPath, RedisCommon client,  ILogger<ToolsController> logger)
         {
             this.settingPath = settingPath;
             this._redis = client;
-            this._hostingEnvironment = hostingEnvironment;
+            //this._hostingEnvironment = hostingEnvironment;
             this._logger = logger;
         }
 
