@@ -81,7 +81,7 @@ namespace Play.Controllers
         {
             try
             {
-                new VideosInit(_settingPath, _redis, _hostingEnvironment,_logger).Init();
+                new VideosInit(_settingPath, _redis,_logger).Init();
             }
             catch (Exception e)
             {
