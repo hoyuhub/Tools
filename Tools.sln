@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptTools", "EncryptTool
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Play", "Play\Play.csproj", "{B1D50469-ABD0-4269-938C-55C12649BBE4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{1066989F-13EA-453F-BED0-DFBD3A6E70B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMove", "FileMove\FileMove.csproj", "{BA62E1A0-F2FD-4E67-8830-03B4274E8765}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,17 @@ Global
 		{B1D50469-ABD0-4269-938C-55C12649BBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1D50469-ABD0-4269-938C-55C12649BBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1D50469-ABD0-4269-938C-55C12649BBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA62E1A0-F2FD-4E67-8830-03B4274E8765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA62E1A0-F2FD-4E67-8830-03B4274E8765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA62E1A0-F2FD-4E67-8830-03B4274E8765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA62E1A0-F2FD-4E67-8830-03B4274E8765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9F802B6-3609-4D1A-BF77-245660239FEB} = {1066989F-13EA-453F-BED0-DFBD3A6E70B1}
+		{BA62E1A0-F2FD-4E67-8830-03B4274E8765} = {1066989F-13EA-453F-BED0-DFBD3A6E70B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A851AB5-79E6-4407-82B3-0360514B9656}
